@@ -1,0 +1,47 @@
+<div class="unsupported {{#if _showUnsupported}}unsupported-show{{/if}}">
+    <div class="unsupported-inner">
+
+    {{#if title}}
+    <div class="unsupported-title">
+    	<h1 class="unsupported-title-inner">{{{title}}}</h1>
+    </div>
+    {{/if}}
+
+    {{#if message}}
+    <div class="unsupported-message">
+    	<p class="unsupported-message-inner">{{{message}}}</p>
+    </div>
+    {{/if}}
+
+    {{#if _graphic}}
+    <div class="unsupported-graphic">
+    	<img src="{{_graphic.src}}" alt="{{_graphic.alt}}" title="{{_graphic.title}}"/>
+    </div>
+    {{/if}}
+
+    {{#if _screenSizeUnsupported}}
+    <div class="unsupported-item unsupported-screen-size">
+    	
+	    {{#if _screenSize.message}}
+	    	<div class="unsupported-message unsupported-screen-size-message">
+		    	<p class="unsupported-message unsupported-screen-size-message-inner">{{{_screenSize.message}}}</p>
+		    </div>
+	    {{/if}}
+
+    </div>
+    {{/if}}
+
+    {{#if _browserUnsupported}}
+    <div class="unsupported-item unsupported-screen-size">
+    	
+	    {{#if _browser.message}}
+	    	<div class="unsupported-message unsupported-screen-size-message">
+		    	<p class="unsupported-message unsupported-screen-size-message-inner">{{{_browser.message}}}</p>
+		    </div>
+	    {{/if}}
+
+    </div>
+    {{/if}}
+
+    </div>
+</div>
