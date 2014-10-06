@@ -24,7 +24,6 @@ define(function(require) {
             _.defer(_.bind(function() {
                 this.postRender();
             }, this));
-            console.log(this.model);
             return this;
         },
 

@@ -9,7 +9,6 @@ define(function(require) {
 
     	var config = Adapt.course.get("_unsupported");
     	if (config && config._isEnabled) {
-    		console.log(config);
     		var model = new Backbone.Model(config);
     		new UnsupportedView({model: model});
     	}
