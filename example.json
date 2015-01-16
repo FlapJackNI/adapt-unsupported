@@ -14,11 +14,22 @@
     },
     "_browser": {
         "_supported": [
-            "Chrome",
-            "Safari",
-            "Firefox",
-            "Explorer"
-        ],
+			{
+			    "name": "Chrome"
+			},
+			{
+			    "name": "Safari"
+			},
+			{
+			    "name": "Firefox"
+			},
+			{
+			    "name": "Internet Explorer",
+			    "_unsupported": [
+			        8
+			    ]
+			}
+		],
         "message": "Please use a better browser."
     }
 }

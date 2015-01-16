@@ -41,12 +41,17 @@ define(function(require) {
 
         checkScreenSize: function() {
             var unsupported = false;
-            var windowWidth = $(window).width();
-            var windowHeight = $(window).height();
             var screenSize = this.model.get("_screenSize");
-            if (windowWidth < screenSize._minimumWidth || windowHeight < screenSize._minimumHeight) {
-                unsupported = true;
+
+            if (screenSize) {
+                var windowWidth = $(window).width();
+                var windowHeight = $(window).height();
+
+                if (windowWidth < screenSize._minimumWidth || windowHeight < screenSize._minimumHeight) {
+                    unsupported = true;
+                }
             }
+    
             this.model.set({
                 _screenSizeUnsupported: unsupported
             });
@@ -55,13 +60,21 @@ define(function(require) {
 
         checkBrowser: function() {
             var unsupported = true;
-            var supportedBrowsers = this.model.get("_browser")._supported;
-            for (var i = 0; i < supportedBrowsers.length; i++) {
-                if ($("html").hasClass(supportedBrowsers[i])) {
-                    unsupported = false;
-                    break;
-                }
+            var supportedBrowsers = this.model.get('_browser')._supported;
+            var browserCollection = new Backbone.Collection(supportedBrowsers);
+            var detectedBrowser = Adapt.device.browser;
+            var detectedBrowserVersion = parseInt(Adapt.device.version);
+            var supportedBrowser = browserCollection.findWhere({name: detectedBrowser});
+
+            if (supportedBrowser) {
+                var unsupportedVersions = supportedBrowser.get('_unsupported');
+
+                if (_.indexOf(unsupportedVersions, detectedBrowserVersion)) unsupported = false;
             }
+            else {
+                unsupported = false;
+            }
+
             this.model.set({
                 _browserUnsupported: unsupported
             });
