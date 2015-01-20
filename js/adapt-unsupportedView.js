@@ -72,7 +72,7 @@ define(function(require) {
                 if (_.indexOf(unsupportedVersions, detectedBrowserVersion)) unsupported = false;
             }
             else {
-                unsupported = false;
+                unsupported = true;
             }
 
             this.model.set({
