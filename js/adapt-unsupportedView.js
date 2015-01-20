@@ -68,10 +68,12 @@ define(function(require) {
 
             if (supportedBrowser) {
                 var unsupportedVersions = supportedBrowser.get('_unsupported');
-
-                if (_.indexOf(unsupportedVersions, detectedBrowserVersion)) unsupported = false;
-            }
-            else {
+                if (_.indexOf(unsupportedVersions, detectedBrowserVersion) == -1) {
+                    unsupported = false;
+                } else {
+                    unsupported = true;
+                }
+            } else {
                 unsupported = true;
             }
 
